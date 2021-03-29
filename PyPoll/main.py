@@ -48,8 +48,24 @@ with open(csv_path) as csv_file:
     print("RESULTS BY COUNTY \n")
     print("--------------------------")
 
-    print(f'COUNTY: \n')
     #print stats per county
+
+
+#Write results in text file
+textFile = open("Analysis/Results.txt", mode= 'w')
+textFile.write("==========================================================\n")
+textFile.write("                  STATE ELECTION RESULTS\n\n")
+textFile.write(f"State Total Votes: {tot_vote_counter}\n")
+textFile.write("----------------------------------------------------------\n")
+for j in range(len(candidate_list)):
+    textFile.write(f'{candidate_list[j]}: {candidate_per[j]}% ({candidate_votes[j]} votes)\n')
+textFile.write("---------------------------------------------------------- \n")
+textFile.write(f'State Winner: {winner} \n\n\n')
+textFile.write("==========================================================\n")
+textFile.write("                     RESULTS BY COUNTY \n")
+textFile.write("----------------------------------------------------------\n")
+textFile.write("                       under dev.\n")
+textFile.close()
     
 
 
