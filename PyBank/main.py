@@ -33,19 +33,17 @@ with open(csvpath) as csvfile:
     cur_val.pop(0)
     prev_day.pop(0)
 
+    dif = []
     for j in range(len(cur_val)):
         dif.append(cur_val[j] - prev_day[j])
 
-    
+    averageDailyChange = round(sum(dif) / len(dif), 2)
 
     print("FINANCIAL ANALYSIS")
     print("-----------------------------")
     print(f'Total months in period: {month_counter}')
     print(f'Profit/Losses for perior: ${balance}.-')
-
-    print(cur_val)
-    print(prev_day)
-    print(dif)
+    print(f'Average Daily Change: ${averageDailyChange}')
 
 
 
