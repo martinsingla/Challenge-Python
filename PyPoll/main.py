@@ -11,28 +11,45 @@ with open(csv_path) as csv_file:
 
     tot_vote_counter = 0
     candidate_list = []
+    candidate_votes = []
 
     for i in csvreader:
 
         #count total votes
         tot_vote_counter = tot_vote_counter + 1
         
-        #identify individual candidates
+        #identify individual candidates and votes
         if (i[2] not in candidate_list):
             candidate_list.append(i[2])
-
+            candidate_votes.append(0)
+        
+        if (i[2] in candidate_list):
+            candidate_votes[candidate_list.index(i[2])] += 1
 
     #quantify % per candidate and count tot. votes
+    candidate_per = []
+    for j in range(len(candidate_list)):
+        candidate_per.append(round(candidate_votes[j] / tot_vote_counter * 100, 3))
 
     #Identify Winner
-
-
+    winner = candidate_list[candidate_votes.index(max(candidate_votes))]
 
     #Loop process for each county
 
-    print("ELECTION RESULTS")
+    print("STATE ELECTION RESULTS")
     print("--------------------------")
-    print(f"TOTAL VOTES: {tot_vote_counter} \n")
+    print(f"STATE TOTAL VOTES: {tot_vote_counter}")
     print("--------------------------")
     for j in range(len(candidate_list)):
-        print(f'{candidate_list[j]}: ')
+        print(f'{candidate_list[j]}: {candidate_per[j]}% ({candidate_votes[j]} votes)')
+    print("-------------------------- \n")
+    print(f'STATE WINNER: {winner} \n')
+    print("--------------------------")
+    print("RESULTS BY COUNTY \n")
+    print("--------------------------")
+
+    print(f'COUNTY: \n')
+    #print stats per county
+    
+
+
